@@ -23,5 +23,7 @@ with our_first_model:
 
 burnin =100
 multi_chain = multi_trace[burnin:]
-pm.traceplot(multi_trace, lines={'theta':theta_real})
-plt.savefig("img206.png")
+
+pm.summary(multi_chain)
+#pm.forestplot(multi_chain, varnames={'theta'})
+#plt.savefig('img207.png')
