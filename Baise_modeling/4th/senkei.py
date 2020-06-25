@@ -12,9 +12,9 @@ np.random.seed(314)
 N = 100
 alfa_real = 2.5
 beta_real = 0.9
-eps_real = np.random.normal(0, 0.5, size=N)
+eps_real = np.random.normal(0, 0.5, N)
 
-x = np.random.normal(10, 1, size=N)
+x = np.random.normal(10, 1, N)
 y_real = alfa_real + beta_real * x
 y = y_real + eps_real
 
@@ -31,7 +31,7 @@ y = y_real + eps_real
 
 with pm.Model() as model:
     alpha = pm.Normal('alpha', mu=0, sd=10)
-    beta = pm.Normal('beta', mu=0, sd=10)
+    beta = pm.Normal('beta', mu=0, sd=1)
     epsilon = pm.HalfCauchy('epsilon', 5)
 
     mu= pm.Deterministic('mu', alpha + beta * x)
@@ -39,12 +39,13 @@ with pm.Model() as model:
 
     start = pm.find_MAP()
     step = pm.Metropolis()
-    trace = pm.sample(11000, step, start)
+    trace = pm.sample(11000, step, start, cores=1)
 
 trace_n = trace[1000:]
 #pm.traceplot(trace_n)
 #plt.savefig("img404.png")
 
-varnames = ['alpha', 'beta', 'epsilon']
-pm.autocorrplot(trace_n, varnames)
-plt.savefig('img405.png')
+#varnames = ['alpha', 'beta', 'epsilon']
+#pm.autocorrplot(trace_n, varnames)
+pm.traceplot(trace_n)
+plt.savefig('img403-2.png')
