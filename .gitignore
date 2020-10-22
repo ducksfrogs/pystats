@@ -44,3 +44,4 @@ geckodriver.log
 *.iml
 ./Python-and-Spark-for-Big-Data-master/*
 *.png
+.virtual_documents/*
