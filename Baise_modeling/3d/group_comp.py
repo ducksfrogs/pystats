@@ -23,3 +23,15 @@ pm.traceplot(chain_cg)
 plt.savefig('img311.png')
 #sns.violinplot(x='day', y='tip',data=tips)
 #plt.savefig('img310.png')
+dist = stats.norm()
+
+_, ax = plt.subplot(3,2, figsize=(16,12))
+
+comparisons = [(i,j) for i in range(4) for j in range(i+1, 4)]
+
+pos = [(k,l) for k in range(3) for l in (0,1)]
+
+for (i,j), (k,l) in zip(comparisons, pos):
+    means_diff = chain_cg['means'][:,i]-chain_cg['means'][:,j]
+
+    d_cohen = (means_diff/ np.sqrt(( +chain_cg['sds'][:,j]**2
