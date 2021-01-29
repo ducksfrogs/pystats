@@ -47,3 +47,4 @@ geckodriver.log
 .virtual_documents/*
 .virtual_documents/
 *.png
+input/
