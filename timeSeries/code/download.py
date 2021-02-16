@@ -19,3 +19,5 @@ if __name__ == "__main__":
 
     with open(saveFileName, 'wb') as saveFile:
         saveFile.write(response.content)
+
+main()
