@@ -23,3 +23,8 @@ combine = [train_df, test_df]
 train_df.info()
 print("_"*50)
 test_df.info()
+
+
+train_df.describe(include=['O'])
+
+train_df[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean().sort_values(by='Survived', ascending=False)
