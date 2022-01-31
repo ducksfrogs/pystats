@@ -48,3 +48,4 @@ geckodriver.log
 .virtual_documents/
 *.png
 input/
+data/*
